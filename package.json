@@ -1,0 +1,14 @@
+{
+  "name": "kinvey-flex-services",
+  "version": "7.11.60",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "kinvey-flex-sdk": "3.2.1",
+    "request": "2.88.0",
+    "request-promise-native": "^1.0.5"
+  },
+  "keywords": [],
+  "description": ""
+}
