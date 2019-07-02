@@ -28,7 +28,6 @@ function saveToGCS({ _uploadURL, mimeType, size, _requiredHeaders }, fileBuffer)
 }
 
 function getFileUrl(url, fileId, authorization) {
-
   return request({
     url: url + "/" + fileId,
     method: "GET",
@@ -37,10 +36,13 @@ function getFileUrl(url, fileId, authorization) {
 }
 
 module.exports.uploadFile = async (file, fileMetadata, url, authorization) => {
-  const metadata = await saveToKinvey(url, authorization, fileMetadata);
-  const meta = JSON.parse(metadata);
-  const fileId = meta._id;
-  await saveToGCS(meta, file);
+  try {
+    const metadata = await saveToKinvey(url, authorization, fileMetadata);
+    const meta = JSON.parse(metadata);
+    await saveToGCS(meta, file);
 
-  return getFileUrl(url, fileId, authorization);
+    return getFileUrl(url, meta._id, authorization);
+  } catch (error) {
+    return Promise.reject(error.message);
+  }
 };
