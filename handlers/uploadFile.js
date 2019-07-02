@@ -28,24 +28,19 @@ function saveToGCS({ _uploadURL, mimeType, size, _requiredHeaders }, fileBuffer)
 }
 
 function getFileUrl(url, fileId, authorization) {
-  const headers = { authorization };
 
   return request({
     url: url + "/" + fileId,
-    headers,
-    method: "GET"
+    method: "GET",
+    headers: { authorization }
   });
 }
 
-module.exports.uploadFile = (file, fileMetadata, url, authorization) => {
-  let fileId;
-  // Return a promise with the response from the upload
-  return saveToKinvey(url, authorization, fileMetadata)
-    .then(kinveyResponse => {
-      const res = JSON.parse(kinveyResponse);
-      fileId = res._id;
+module.exports.uploadFile = async (file, fileMetadata, url, authorization) => {
+  const metadata = await saveToKinvey(url, authorization, fileMetadata);
+  const meta = JSON.parse(metadata);
+  const fileId = meta._id;
+  await saveToGCS(meta, file);
 
-      return saveToGCS(res, file);
-    })
-    .then(() => getFileUrl(url, fileId, authorization));
+  return getFileUrl(url, fileId, authorization);
 };
