@@ -16,7 +16,7 @@ function saveToKinvey(url, authorization, fileMetadata) {
 }
 
 function saveToGCS({ _uploadURL, mimeType, size, _requiredHeaders }, fileBuffer) {
-  _requiredHeaders["Content-Lenght"] = size;
+  _requiredHeaders["Content-Length"] = size;
   _requiredHeaders["Content-Type"] = mimeType;
 
   return request({

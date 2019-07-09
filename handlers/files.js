@@ -9,6 +9,7 @@ module.exports.uploadFromBase64 = (context, complete, modules) => {
   const { authorization } = context.headers;
   const { metadata, file } = context.body;
   const binaryFile = Buffer.from(file, "base64");
+  metadata.size = binaryFile.byteLength;
 
   uploadFile(binaryFile, metadata, url, authorization)
     .then(response =>
