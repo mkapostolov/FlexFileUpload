@@ -1,6 +1,11 @@
+# dependencies
 node_modules
+
+# Config files
 .kinvey
-.projectile
+
+# misc
+output.log
 .DS_Store
+.projectile
 .tern-port
-/output.log
