@@ -1,0 +1,11 @@
+services:
+  - docker
+before_script:
+  - docker run --name sharkasm matioa/flex-file-upload
+script:
+  - docker exec sharkasm npm run test
+after_script:
+  - docker stop sharkasm
+branches:
+  only:
+    - master
