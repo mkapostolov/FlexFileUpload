@@ -2,7 +2,7 @@ services:
   - docker
 before_script:
   - docker build -t matioa/flex-file-upload ./FlexFileUpload
-  - docker run --name sharkasm matioa/flex-file-upload
+  - docker run -d --name sharkasm matioa/flex-file-upload
 script:
   - docker exec sharkasm npm run test
 after_script:
