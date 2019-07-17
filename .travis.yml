@@ -1,12 +1,12 @@
+language: node_js
+node_js:
+  - 8
+cache: npm
 services:
   - docker
-before_script:
-  - docker build -t matioa/flex-file-upload ./FlexFileUpload
-  - docker run -d --name sharkasm matioa/flex-file-upload
 script:
-  - docker exec sharkasm npm run test
-after_script:
-  - docker stop sharkasm
-branches:
-  only:
-    - master
+  - cd ./FlexFileUpload/
+  - npm install
+  - npm install -g kinvey-cli@5.0.0-alpha.0
+  - KINVEY_USER_2FA_TOKEN=$(docker run --rm gzm55/oathtool --totp -b $KINVEY_USER_2FA_SECRET)
+  - kinvey profile create testProfile --email $KINVEY_USER_EMAIL --password $KINVEY_USER_PASSWORD --2fa $KINVEY_USER_2FA_TOKEN
