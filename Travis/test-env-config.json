@@ -22,11 +22,11 @@
     }
   },
   "customEndpoints": {
-    "uploadFile": {
+    "uploadFromBase64": {
       "type": "external",
       "service": "FSO_Martin",
       "serviceEnvironment": "test",
-      "handlerName": "uploadFile"
+      "handlerName": "uploadFromBase64"
     }
   }
 }
