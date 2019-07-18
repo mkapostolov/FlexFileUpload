@@ -4,7 +4,7 @@ const service = process.env.KINVEY_SERVICE_ID;
 const serviceEnv = process.env.KINVEY_SERVICE_ENV_ID;
 const request = require("request-promise-native");
 const userUrl = `https://${kid}:${appSecret}@baas.kinvey.com/user/${kid}/`;
-const customEndpointUrl = `https://baas.kinvey.com/rpc/${kid}/`;
+const customEndpointUrl = `https://baas.kinvey.com/rpc/${kid}/custom/`;
 let accessToken;
 const fileData = {
   metadata: { _filename: "movie.png", _public: true, mimeType: "image/png" },
