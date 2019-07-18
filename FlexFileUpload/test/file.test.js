@@ -3,12 +3,13 @@ const service = process.env.KINVEY_SERVICE_ID;
 const serviceEnv = process.env.KINVEY_SERVICE_ENV_ID;
 const request = require('request-promise-native');
 const url = `https://console.kinvey.com/_api/v3/services/${service}/environments/${serviceEnv}/discover-source-metadata`;
+const accessToken = process.env.KINVEY_SESSION;
 
 test("should return -1 when the value is not present", () => {
   expect([1, 2, 3].indexOf(4)).toBe(-1);
 });
 
 test("sample request", async () => {
-  const response = await request.post(url);
+  const response = await request({url, method: 'POST', headers:{Authorization:`Kinvey ${accesstoken}`}});
   console.log("response = ", response);
 });
