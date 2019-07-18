@@ -16,8 +16,8 @@ script:
   - export KINVEY_SERVICE_ID="44630668c22e41289d2212897b5117e5"
   - export PACKAGE_VERSION=$(node -p "require('./package.json').version")
   - export KINVEY_CLI_2FA=$(docker run --rm gzm55/oathtool --totp -b $KINVEY_USER_2FA_SECRET)
-  - kinvey profile create "testProfile"
+  - kinvey profile create "testProile"
   - kinvey profile use "testProfile"
-  - kinvey appenv create ${KINVEY_APP_ENV_NAME} --app ${KINVEY_APP_NAME} test.json
+  - kinvey appenv create ${KINVEY_APP_ENV_NAME} --app ${KINVEY_APP_NAME} ../test.json
   - kinvey flex deploy
   - ./awaitDeployEnd.sh
