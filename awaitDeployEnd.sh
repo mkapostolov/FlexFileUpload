@@ -10,7 +10,7 @@ cd FlexFileUpload/
 deploymentStatus='initiated'
 while [ "$deploymentStatus" != "COMPLETED" ]
 	do
-	deploymentStatus=$(kinvey flex status --service ${KINVEY_SERVICE_ID} --evn ${KINVEY_SERVICE_ENV_NAME}| grep "deploymentStatus" | awk '{ print $2}' )
+	deploymentStatus=$(kinvey flex status --service ${KINVEY_SERVICE_ID} --env ${KINVEY_SERVICE_ENV_NAME}| grep "deploymentStatus" | awk '{ print $2}' )
 
   echo "deployment status   -> target-COMPLETED : current-${deploymentStatus}"
 
@@ -27,7 +27,7 @@ done
 statusVersion='1'
 while [ "${PACKAGE_VERSION}" != "${statusVersion}" ]
 	do
-	 statusVersion=$(kinvey flex status --service ${KINVEY_SERVICE_ID} --evn ${KINVEY_SERVICE_ENV_NAME}|| grep "version" | awk '{ print $2}' )
+	 statusVersion=$(kinvey flex status --service ${KINVEY_SERVICE_ID} --env ${KINVEY_SERVICE_ENV_NAME}|| grep "version" | awk '{ print $2}' )
 	echo "package version   -> target v${PACKAGE_VERSION} : current v${statusVersion}"
 	sleep 5
 done
@@ -36,7 +36,7 @@ done
 runtimeStatus="null"
 while [ "$runtimeStatus" != "ONLINE" ]
 	do
-	 runtimeStatus=$(kinvey flex status --service ${KINVEY_SERVICE_ID} --evn ${KINVEY_SERVICE_ENV_NAME}|| grep "status" | awk '{ print $2}' )
+	 runtimeStatus=$(kinvey flex status --service ${KINVEY_SERVICE_ID} --env ${KINVEY_SERVICE_ENV_NAME}|| grep "status" | awk '{ print $2}' )
 
 	echo "runtime status    -> target-ONLINE : current-${runtimeStatus}"
 	sleep 5
