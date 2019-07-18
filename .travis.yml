@@ -8,7 +8,7 @@ script:
   - cd ./FlexFileUpload/
   - npm install
   - npm install -g kinvey-cli@5.0.0-alpha.0
-  - export KINVEY_APP_NAME="MyProgressAppy"
+  - export KINVEY_APP_NAME="MyProgressApp"
   - export KINVEY_APP_ENV_NAME="test"
   - export KINVEY_SERVICE_ENV_NAME="test"
   - export KINVEY_SERVICE_ID="44630668c22e41289d2212897b5117e5"
