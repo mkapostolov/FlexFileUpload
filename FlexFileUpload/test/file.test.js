@@ -13,12 +13,13 @@ const fileData = {
 };
 
 beforeAll(async () => {
-  const response = await request({
+  let response = await request({
     url: userUrl,
     method: "POST",
     body: JSON.stringify({ username: "123", password: "123" })
   });
   console.log("response = ", response);
+  response = JSON.parse(response);
   accessToken = response._kmd.authtoken;
   console.log("accessToken = ", accessToken);
 });
