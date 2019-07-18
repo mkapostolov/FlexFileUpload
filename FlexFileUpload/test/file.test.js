@@ -10,6 +10,6 @@ test("should return -1 when the value is not present", () => {
 });
 
 test("sample request", async () => {
-  const response = await request({url, method: 'POST', headers:{Authorization:`Kinvey ${accesstoken}`}});
+  const response = await request({url, method: 'POST', headers:{Authorization:`Kinvey ${accessToken}`}});
   console.log("response = ", response);
 });

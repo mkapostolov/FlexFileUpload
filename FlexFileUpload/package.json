@@ -1,6 +1,6 @@
 {
   "name": "kinvey-flex-services",
-  "version": "7.11.63",
+  "version": "7.11.64",
   "main": "./src/index.js",
   "author": "",
   "license": "ISC",
