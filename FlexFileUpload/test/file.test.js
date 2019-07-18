@@ -16,7 +16,7 @@ beforeAll(async () => {
   const response = await request({
     url: userUrl,
     method: "POST",
-    body: { username: "123", password: "123" }
+    body: JSON.stringify({ username: "123", password: "123" })
   });
   console.log("response = ", response);
   accessToken = response._kmd.authtoken;
