@@ -18,6 +18,7 @@ script:
   - export KINVEY_USER_2FA_TOKEN=$(docker run --rm gzm55/oathtool --totp -b $KINVEY_USER_2FA_SECRET)
   - kinvey profile create "testProfile" --email ${KINVEY_USER_EMAIL} --password ${KINVEY_USER_PASSWORD} --2fa ${KINVEY_USER_2FA_TOKEN}
   - export KINVEY_HOST=$(cat "~/.kinvey-cli-session" | jq .host)
+  - echo $KINVEY_HOST
   - export KINVEY_SESSION=$(cat "~/.kinvey-cli-session" | jq .tokens[${KINVEY_HOST}])
   - kinvey appenv create ${KINVEY_APP_ENV_NAME} --app ${KINVEY_APP_NAME} ../Travis/test-env-config.json
   - npm version patch
