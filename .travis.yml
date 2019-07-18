@@ -13,14 +13,16 @@ script:
   - export KINVEY_APP_NAME="MyProgressApp"
   - export KINVEY_APP_ENV_NAME="test"
   - export KINVEY_SERVICE_ENV_NAME="test"
+  - export KINVEY_SERVICE_ENV_ID="3613a41ba8de4b65acd8ec0f2835d383"
   - export KINVEY_SERVICE_ID="44630668c22e41289d2212897b5117e5"
   - export KINVEY_USER_2FA_TOKEN=$(docker run --rm gzm55/oathtool --totp -b $KINVEY_USER_2FA_SECRET)
   - kinvey profile create "testProfile" --email ${KINVEY_USER_EMAIL} --password ${KINVEY_USER_PASSWORD} --2fa ${KINVEY_USER_2FA_TOKEN}
-  - kinvey appenv create ${KINVEY_APP_ENV_NAME} --app ${KINVEY_APP_NAME} ../test.json
+  - kinvey appenv create ${KINVEY_APP_ENV_NAME} --app ${KINVEY_APP_NAME} ../Travis/test-env-config.json
   - npm version patch
   - export PACKAGE_VERSION=$(node -p "require('./package.json').version")
   - kinvey flex deploy --service ${KINVEY_SERVICE_ID} --env ${KINVEY_SERVICE_ENV_NAME}
-  - ../awaitDeployEnd.sh
+  - ../Travis/awaitDeployEnd.sh
+  - npm run test
 
 after_failure:
   - kinvey appenv delete --app ${KINVEY_APP_NAME} --env ${KINVEY_APP_ENV_NAME} --no-prompt
