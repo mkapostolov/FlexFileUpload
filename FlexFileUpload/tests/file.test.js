@@ -1,21 +1,21 @@
 const request = require("request-promise-native");
-const { kid, appSecret } = require("./setup");
+let { kid, appSecret } = require("./setup");
 
 const userUrl = `https://${kid}:${appSecret}@baas.kinvey.com/user/${kid}/`;
 const customEndpointUrl = `https://baas.kinvey.com/rpc/${kid}/custom/`;
 const fileData = require("./test-file.json");
+
 let accessToken;
 
 beforeAll(async () => {
   let response = await request({
     url: userUrl,
     method: "POST",
-    body: JSON.stringify({ username: "123", password: "123" })
+    body: { username: "123", password: "123" },
+    json: true
   });
-  console.log("response = ", response);
-  response = JSON.parse(response);
+
   accessToken = response._kmd.authtoken;
-  console.log("accessToken = ", accessToken);
 });
 
 test("should return -1 when the value is not present", () => {
@@ -27,7 +27,9 @@ test("sample request", async () => {
     url: customEndpointUrl + "uploadFromBase64",
     method: "POST",
     headers: { Authorization: `Kinvey ${accessToken}` },
-    body: JSON.stringify(fileData)
+    body: fileData,
+    json: true
   });
-  console.log("response = ", response);
+
+  expect(response._downloadURL).toBeDefined();
 });
