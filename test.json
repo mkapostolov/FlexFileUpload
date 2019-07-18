@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0.0",
+  "configType": "environment",
+  "settings": {
+    "emailVerification": {
+      "auto": true,
+      "required": false
+    },
+    "apiVersion": 3
+  },
+  "collections": {
+    "Books": {
+      "type": "internal",
+      "permissions": {
+        "all-users": {
+          "create": "always",
+          "read": "grant",
+          "update": "entity",
+          "delete": "entity"
+        }
+      }
+    }
+  },
+  "customEndpoints": {
+    "uploadFile": {
+      "type": "external",
+      "service": "FSO_Martin",
+      "serviceEnvironment": "test",
+      "handlerName": "uploadFile"
+    }
+  }
+}
