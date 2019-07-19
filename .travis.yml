@@ -17,7 +17,7 @@ install:
 before_script:
   - ../Travis/create_kinvey_test_env.sh
   - export KINVEY_SERVICE_ENV_NAME=${KINVEY_SERVICE_ENV_NAME_TEST}
-  - ../Travis/deploy_to_test._env.sh
+  - ../Travis/deploy_to_test_env.sh
   - ../Travis/await_deploy_end.sh
 script:
   - npm run test
