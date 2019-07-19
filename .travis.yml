@@ -18,7 +18,8 @@ script:
   - source ../travis/create_appenv_test.sh
   - cd /home/travis
   - cat .kinvey-cli
-  - cat .kinvey-cli | jq
+  - export MYHOST=$(node -p "require('.kinvey-cli').profiles.testProfile.host")
+  - echo $MYHOST
 #- export KINVEY_SERVICE_ENV_NAME=${KINVEY_SERVICE_ENV_NAME_TEST}
 #- source ../travis/deploy.sh
 #- ../travis/await_deploy_end.sh
