@@ -4,11 +4,12 @@ cache: npm
 branches: {only: [master]}
 services: [docker]
 env:
-  - KINVEY_APP_NAME="MyProgressApp"
-  - KINVEY_APP_ENV_NAME="Test"
-  - KINVEY_SERVICE_ID="44630668c22e41289d2212897b5117e5"
-  - KINVEY_SERVICE_ENV_NAME_TEST="Test"
-  - KINVEY_SERVICE_ENV_NAME_PRODUCTION="Production"
+  global:
+    - KINVEY_APP_NAME="MyProgressApp"
+    - KINVEY_APP_ENV_NAME="Test"
+    - KINVEY_SERVICE_ID="44630668c22e41289d2212897b5117e5"
+    - KINVEY_SERVICE_ENV_NAME_TEST="Test"
+    - KINVEY_SERVICE_ENV_NAME_PRODUCTION="Production"
 install:
   - cd ./FlexFileUpload/
   - npm install
