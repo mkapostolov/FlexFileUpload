@@ -16,13 +16,9 @@ install:
   - npm install -g kinvey-cli@5.0.0-alpha.0
 script:
   - source ../travis/create_appenv_test.sh
-  - cd /home/
-  - ls -al
   - cd /home/travis
-  - ls -al
-  - cd ~
-  - echo $PWD
-  - ls -al
+  - cat .kinvey-cli
+  - cat .kinvey-cli | jq
 #- export KINVEY_SERVICE_ENV_NAME=${KINVEY_SERVICE_ENV_NAME_TEST}
 #- source ../travis/deploy.sh
 #- ../travis/await_deploy_end.sh
