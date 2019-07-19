@@ -23,7 +23,8 @@ script:
   - npm run test
 after_success:
   - export KINVEY_SERVICE_ENV_NAME=${KINVEY_SERVICE_ENV_NAME_PRODUCTION}
-  - ../Travis/deploy_to_test._env.sh
+  - ../Travis/deploy_to_test_env.sh
   - ../Travis/await_deploy_end.sh
-after_script:
+  - ../Travis/delete_kinvey_test_env.sh
+after_failure:
   - ../Travis/delete_kinvey_test_env.sh
