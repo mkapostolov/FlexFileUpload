@@ -15,9 +15,10 @@ install:
   - npm install
   - npm install -g kinvey-cli@5.0.0-alpha.0
 script:
-  - cd ../../
   - source ../travis/create_appenv_test.sh
-  - echo $PWD
+  - cd /home/
+  - ls -al
+  - cd /home/travis
   - ls -al
   - cd ~
   - echo $PWD
