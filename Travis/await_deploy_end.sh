@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Bump the version of the package.json file
-#npm version patch | read deployVersion
-#echo "Version bumped to $deployVersion"
-
-cd FlexFileUpload/
-
 # Whatch for Job status changes
 deploymentStatus='initiated'
 while [ "$deploymentStatus" != "COMPLETED" ]
