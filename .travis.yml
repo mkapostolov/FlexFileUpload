@@ -11,18 +11,20 @@ env:
     - KINVEY_SERVICE_ENV_NAME_TEST="Test"
     - KINVEY_SERVICE_ENV_NAME_PRODUCTION="Production"
 install:
-  - cd ./FlexFileUpload/
-  - npm install
-  - npm install -g kinvey-cli@5.0.0-alpha.0
-script:
-  - source ../Travis/create_appenv_test.sh
-  - export KINVEY_SERVICE_ENV_NAME=${KINVEY_SERVICE_ENV_NAME_TEST}
-  - source ../Travis/deploy.sh
-  - ../Travis/await_deploy_end.sh
-  - npm run test
-after_success:
-  - export KINVEY_SERVICE_ENV_NAME=${KINVEY_SERVICE_ENV_NAME_PRODUCTION}
-  - source ../Travis/deploy.sh
-  - ../Travis/await_deploy_end.sh
-after_script:
-  - ../Travis/delete_appenv_test.sh
+  - echo $PWD
+  - ls -al
+#- cd ./FlexFileUpload/
+#- npm install
+#- npm install -g kinvey-cli@5.0.0-alpha.0
+#script:
+#- source ../travis/create_appenv_test.sh
+#- export KINVEY_SERVICE_ENV_NAME=${KINVEY_SERVICE_ENV_NAME_TEST}
+#- source ../travis/deploy.sh
+#- ../travis/await_deploy_end.sh
+#- npm run test
+#after_success:
+#- export KINVEY_SERVICE_ENV_NAME=${KINVEY_SERVICE_ENV_NAME_PRODUCTION}
+#- source ../travis/deploy.sh
+#- ../travis/await_deploy_end.sh
+#after_script:
+#- ../travis/delete_appenv_test.sh
