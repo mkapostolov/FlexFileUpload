@@ -18,11 +18,11 @@ script:
   - source ../Travis/create_kinvey_test_env.sh
   - export KINVEY_SERVICE_ENV_NAME=${KINVEY_SERVICE_ENV_NAME_TEST}
   - source ../Travis/deploy_to_test_env.sh
-  - source ../Travis/await_deploy_end.sh
+  - ../Travis/await_deploy_end.sh
   - npm run test
 after_success:
   - export KINVEY_SERVICE_ENV_NAME=${KINVEY_SERVICE_ENV_NAME_PRODUCTION}
   - source ../Travis/deploy_to_test_env.sh
-  - source ../Travis/await_deploy_end.sh
+  - ../Travis/await_deploy_end.sh
 after_script:
   - ../Travis/delete_kinvey_test_env.sh
