@@ -25,7 +25,7 @@
     "uploadFromBase64": {
       "type": "external",
       "service": "FSO_Martin",
-      "serviceEnvironment": "test",
+      "serviceEnvironment": "Test",
       "handlerName": "uploadFromBase64"
     }
   }
