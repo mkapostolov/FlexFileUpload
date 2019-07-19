@@ -1,6 +1,6 @@
 {
   "name": "kinvey-flex-services",
-  "version": "7.11.65",
+  "version": "7.11.66",
   "main": "./src/index.js",
   "jest": {
     "setupFilesAfterEnv": [
