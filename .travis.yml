@@ -15,14 +15,14 @@ install:
   - npm install
   - npm install -g kinvey-cli@5.0.0-alpha.0
 script:
-  - source ../Travis/create_kinvey_test_env.sh
+  - source ../Travis/create_appenv_test.sh
   - export KINVEY_SERVICE_ENV_NAME=${KINVEY_SERVICE_ENV_NAME_TEST}
-  - source ../Travis/deploy_to_test_env.sh
+  - source ../Travis/deploy.sh
   - ../Travis/await_deploy_end.sh
   - npm run test
 after_success:
   - export KINVEY_SERVICE_ENV_NAME=${KINVEY_SERVICE_ENV_NAME_PRODUCTION}
-  - source ../Travis/deploy_to_test_env.sh
+  - source ../Travis/deploy.sh
   - ../Travis/await_deploy_end.sh
 after_script:
-  - ../Travis/delete_kinvey_test_env.sh
+  - ../Travis/delete_appenv_test.sh
