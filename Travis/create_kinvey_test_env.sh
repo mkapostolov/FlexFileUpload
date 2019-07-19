@@ -1,5 +1,4 @@
 #!/bin/bash
-set -v
 
 export KINVEY_USER_2FA_TOKEN=$(docker run --rm gzm55/oathtool --totp -b $KINVEY_USER_2FA_SECRET)
 kinvey profile create "testProfile" --email ${KINVEY_USER_EMAIL} --password ${KINVEY_USER_PASSWORD} --2fa ${KINVEY_USER_2FA_TOKEN}
